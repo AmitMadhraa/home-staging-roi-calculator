@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://home-staging-roi-calculator.pages.dev/sitemap.xml
 
 # Allow all bots to index the site
 User-agent: Googlebot
