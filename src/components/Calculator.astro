@@ -1,0 +1,316 @@
+---
+---
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+  <h1 class="text-3xl font-bold text-center mb-8 text-blue-800">Home Staging ROI Calculator</h1>
+  
+  <form id="roiCalculator" class="space-y-6">
+    <!-- Initial Investment Section -->
+    <section class="border-b pb-6">
+      <h2 class="text-xl font-semibold mb-4 text-blue-700">Initial Investment</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700">Professional Staging Fee ($)</label>
+          <input type="number" name="stagingFee" min="0" placeholder="e.g., 2500" class="w-full p-2 border rounded" required>
+          <p class="text-sm text-gray-500 mt-1">Typical range: $1,500 - $5,000</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Furniture Rental (Monthly) ($)</label>
+          <input type="number" name="furnitureRental" min="0" placeholder="e.g., 1200" class="w-full p-2 border rounded" required>
+          <p class="text-sm text-gray-500 mt-1">Average cost: $500 - $2,000 per month</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Additional Decor & Accessories ($)</label>
+          <input type="number" name="decorCost" min="0" placeholder="e.g., 500" class="w-full p-2 border rounded" required>
+          <p class="text-sm text-gray-500 mt-1">Artwork, plants, accent pieces</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Minor Repairs & Touch-ups ($)</label>
+          <input type="number" name="repairCost" min="0" placeholder="e.g., 300" class="w-full p-2 border rounded" required>
+          <p class="text-sm text-gray-500 mt-1">Paint, fixtures, hardware</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Property Details Section -->
+    <section class="border-b pb-6">
+      <h2 class="text-xl font-semibold mb-4 text-blue-700">Property Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700">Current Property Value ($)</label>
+          <input type="number" name="propertyValue" min="0" placeholder="e.g., 500000" class="w-full p-2 border rounded" required>
+          <p class="text-sm text-gray-500 mt-1">Current market value before staging</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Square Footage</label>
+          <input type="number" name="squareFootage" min="0" placeholder="e.g., 2000" class="w-full p-2 border rounded" required>
+          <p class="text-sm text-gray-500 mt-1">Total living area</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Expected Days on Market (Without Staging)</label>
+          <input type="number" name="daysOnMarket" min="0" placeholder="e.g., 90" class="w-full p-2 border rounded" required>
+          <p class="text-sm text-gray-500 mt-1">Average in your area without staging</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Property Type</label>
+          <select name="propertyType" class="w-full p-2 border rounded" required>
+            <option value="single">Single Family Home</option>
+            <option value="condo">Condo/Apartment</option>
+            <option value="luxury">Luxury Property</option>
+            <option value="vacation">Vacation Home</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Factors Section -->
+    <section class="border-b pb-6">
+      <h2 class="text-xl font-semibold mb-4 text-blue-700">Market Factors</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700">Local Market Condition</label>
+          <select name="marketCondition" class="w-full p-2 border rounded" required>
+            <option value="hot">Hot Market (Seller's Market)</option>
+            <option value="neutral">Balanced Market</option>
+            <option value="cold">Cold Market (Buyer's Market)</option>
+          </select>
+          <p class="text-sm text-gray-500 mt-1">Current market conditions in your area</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Season</label>
+          <select name="season" class="w-full p-2 border rounded" required>
+            <option value="spring">Spring (Peak Season)</option>
+            <option value="summer">Summer</option>
+            <option value="fall">Fall</option>
+            <option value="winter">Winter (Off Season)</option>
+          </select>
+          <p class="text-sm text-gray-500 mt-1">Planned listing season</p>
+        </div>
+        <div>
+          <label class="block text-gray-700">Competition Level</label>
+          <select name="competition" class="w-full p-2 border rounded" required>
+            <option value="high">High (Many Similar Listings)</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low (Few Similar Listings)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-gray-700">Price Point</label>
+          <select name="pricePoint" class="w-full p-2 border rounded" required>
+            <option value="entry">Entry Level</option>
+            <option value="mid">Mid Range</option>
+            <option value="high">High End</option>
+            <option value="luxury">Luxury</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+      Calculate ROI
+    </button>
+  </form>
+
+  <!-- Results Section -->
+  <div id="results" class="mt-8 hidden">
+    <h2 class="text-2xl font-bold mb-4 text-blue-800">Your ROI Analysis</h2>
+    
+    <!-- Investment Summary -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="font-semibold text-lg mb-2">Total Investment</h3>
+        <p id="totalInvestment" class="text-2xl font-bold text-blue-600"></p>
+        <ul id="investmentBreakdown" class="mt-2 text-sm text-gray-600"></ul>
+      </div>
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="font-semibold text-lg mb-2">Potential Value Increase</h3>
+        <p id="valueIncrease" class="text-2xl font-bold text-green-600"></p>
+        <p id="valueIncreasePercent" class="text-sm text-gray-600"></p>
+      </div>
+    </div>
+
+    <!-- Time and Market Impact -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="font-semibold text-lg mb-2">Time Savings</h3>
+        <p id="timeSavings" class="text-2xl font-bold text-purple-600"></p>
+        <p id="timeComparison" class="text-sm text-gray-600"></p>
+      </div>
+      <div class="bg-gray-50 p-4 rounded-lg">
+        <h3 class="font-semibold text-lg mb-2">Market Advantage</h3>
+        <p id="marketAdvantage" class="text-2xl font-bold text-orange-600"></p>
+        <p id="marketContext" class="text-sm text-gray-600"></p>
+      </div>
+    </div>
+
+    <!-- ROI Summary -->
+    <div class="bg-blue-50 p-6 rounded-lg">
+      <h3 class="font-semibold text-xl mb-3">Return on Investment Summary</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <p class="font-bold text-lg">ROI Percentage</p>
+          <p id="roiPercentage" class="text-3xl font-bold text-blue-700"></p>
+        </div>
+        <div>
+          <p class="font-bold text-lg">Net Profit Potential</p>
+          <p id="netProfit" class="text-3xl font-bold text-green-700"></p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <h4 class="font-semibold mb-2">Recommendations</h4>
+        <ul id="recommendations" class="list-disc list-inside text-gray-700 space-y-1"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const propertyTypeMultipliers = {
+    single: 1.0,
+    condo: 0.9,
+    luxury: 1.2,
+    vacation: 1.1
+  };
+
+  const marketConditionMultipliers = {
+    hot: 1.2,
+    neutral: 1.0,
+    cold: 0.8
+  };
+
+  const seasonalMultipliers = {
+    spring: 1.2,
+    summer: 1.1,
+    fall: 0.9,
+    winter: 0.8
+  };
+
+  const competitionMultipliers = {
+    high: 1.2,
+    medium: 1.0,
+    low: 0.8
+  };
+
+  const pricePointMultipliers = {
+    entry: 1.0,
+    mid: 1.1,
+    high: 1.2,
+    luxury: 1.3
+  };
+
+  document.getElementById('roiCalculator')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      stagingFee: Number(formData.get('stagingFee')),
+      furnitureRental: Number(formData.get('furnitureRental')),
+      decorCost: Number(formData.get('decorCost')),
+      repairCost: Number(formData.get('repairCost')),
+      propertyValue: Number(formData.get('propertyValue')),
+      squareFootage: Number(formData.get('squareFootage')),
+      daysOnMarket: Number(formData.get('daysOnMarket')),
+      propertyType: formData.get('propertyType') as string,
+      marketCondition: formData.get('marketCondition') as string,
+      season: formData.get('season') as string,
+      competition: formData.get('competition') as string,
+      pricePoint: formData.get('pricePoint') as string
+    };
+
+    // Calculate total investment
+    const monthsRental = 2; // Average time
+    const totalInvestment = data.stagingFee + 
+                          (data.furnitureRental * monthsRental) + 
+                          data.decorCost + 
+                          data.repairCost;
+
+    // Calculate potential value increase
+    const baseValueIncrease = data.propertyValue * 0.06; // Base 6% increase
+    const adjustedIncrease = baseValueIncrease * 
+                            propertyTypeMultipliers[data.propertyType] * 
+                            marketConditionMultipliers[data.marketCondition] * 
+                            seasonalMultipliers[data.season] * 
+                            competitionMultipliers[data.competition] * 
+                            pricePointMultipliers[data.pricePoint];
+
+    // Calculate time savings
+    const baseTimeSavings = Math.round(data.daysOnMarket * 0.4); // 40% reduction
+    const adjustedTimeSavings = Math.round(baseTimeSavings * 
+                               marketConditionMultipliers[data.marketCondition] * 
+                               seasonalMultipliers[data.season]);
+
+    // Calculate ROI
+    const roi = ((adjustedIncrease - totalInvestment) / totalInvestment) * 100;
+    const netProfit = adjustedIncrease - totalInvestment;
+
+    // Display results
+    document.getElementById('results')?.classList.remove('hidden');
+
+    // Investment breakdown
+    document.getElementById('totalInvestment')!.textContent = `$${totalInvestment.toLocaleString()}`;
+    const breakdownList = document.getElementById('investmentBreakdown')!;
+    breakdownList.innerHTML = `
+      <li>Staging Fee: $${data.stagingFee.toLocaleString()}</li>
+      <li>Furniture Rental (${monthsRental} months): $${(data.furnitureRental * monthsRental).toLocaleString()}</li>
+      <li>Decor & Accessories: $${data.decorCost.toLocaleString()}</li>
+      <li>Repairs & Touch-ups: $${data.repairCost.toLocaleString()}</li>
+    `;
+
+    // Value increase
+    document.getElementById('valueIncrease')!.textContent = `$${adjustedIncrease.toLocaleString()}`;
+    document.getElementById('valueIncreasePercent')!.textContent = 
+      `${((adjustedIncrease / data.propertyValue) * 100).toFixed(1)}% increase from original value`;
+
+    // Time savings
+    document.getElementById('timeSavings')!.textContent = `${adjustedTimeSavings} days`;
+    document.getElementById('timeComparison')!.textContent = 
+      `Original time: ${data.daysOnMarket} days → New estimate: ${data.daysOnMarket - adjustedTimeSavings} days`;
+
+    // Market advantage
+    const marketAdvantageScore = (
+      (propertyTypeMultipliers[data.propertyType] +
+      marketConditionMultipliers[data.marketCondition] +
+      seasonalMultipliers[data.season] +
+      competitionMultipliers[data.competition]) / 4 * 100
+    ).toFixed(0);
+    document.getElementById('marketAdvantage')!.textContent = `${marketAdvantageScore}%`;
+    document.getElementById('marketContext')!.textContent = getMarketContext(Number(marketAdvantageScore));
+
+    // ROI Summary
+    document.getElementById('roiPercentage')!.textContent = `${roi.toFixed(1)}%`;
+    document.getElementById('netProfit')!.textContent = `$${netProfit.toLocaleString()}`;
+
+    // Recommendations
+    const recommendationsList = document.getElementById('recommendations')!;
+    recommendationsList.innerHTML = generateRecommendations(data, roi, adjustedTimeSavings);
+  });
+
+  function getMarketContext(score: number): string {
+    if (score >= 90) return "Exceptional market advantage";
+    if (score >= 75) return "Strong market position";
+    if (score >= 60) return "Good market opportunity";
+    return "Moderate market conditions";
+  }
+
+  function generateRecommendations(data: any, roi: number, timeSavings: number): string {
+    const recommendations = [];
+
+    if (roi > 200) {
+      recommendations.push("Excellent ROI potential - proceed with full staging plan");
+    } else if (roi > 100) {
+      recommendations.push("Strong ROI - consider comprehensive staging");
+    } else {
+      recommendations.push("Moderate ROI - focus on key areas for maximum impact");
+    }
+
+    if (data.marketCondition === 'hot') {
+      recommendations.push("Hot market - expedite staging process to capitalize on conditions");
+    }
+
+    if (timeSavings > 30) {
+      recommendations.push(`Significant time savings of ${timeSavings} days - staging highly recommended`);
+    }
+
+    return recommendations.map(rec => `<li>${rec}</li>`).join('');
+  }
+</script>

@@ -1,0 +1,79 @@
+---
+import Calculator from '../components/Calculator.astro';
+import Layout from '../layouts/Layout.astro';
+
+const title = "Home Staging ROI Calculator | Calculate Your Home Staging Return on Investment";
+const description = "Free calculator to estimate your home staging ROI. Calculate potential property value increase, time savings, and return on investment for home staging services.";
+---
+
+<Layout title={title} description={description}>
+    <main class="min-h-screen bg-gray-50 py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- How to Use Section -->
+            <section class="mb-12 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-blue-800 mb-4">How to Use This Calculator:</h2>
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>Enter your <strong>Initial Investment</strong> costs including professional staging fees and furniture rental.</li>
+                    <li>Input your <strong>Property Details</strong> including current value and expected days on market.</li>
+                    <li>Select your <strong>Market Factors</strong> including local market conditions and season.</li>
+                    <li>Click "Calculate ROI" to see your potential return on investment.</li>
+                </ol>
+                <p class="mt-4 text-sm text-gray-600">Note: Results are estimates based on industry averages and local market factors.</p>
+            </section>
+
+            <Calculator />
+
+            <!-- Additional Information Section -->
+            <section class="mt-12 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-blue-800 mb-4">Why Home Staging Matters</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">Benefits of Home Staging</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Faster sale time</li>
+                            <li>Higher selling price</li>
+                            <li>Better first impressions</li>
+                            <li>Professional photos</li>
+                            <li>Competitive advantage</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">Market Impact</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Increased buyer interest</li>
+                            <li>More online listing views</li>
+                            <li>Better open house results</li>
+                            <li>Higher perceived value</li>
+                            <li>Broader buyer appeal</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- JSON-LD for SEO -->
+    <script type="application/ld+json" slot="head">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Home Staging ROI Calculator",
+            "description": "Calculate the potential return on investment for home staging services",
+            "url": "https://yourdomain.com",
+            "applicationCategory": "CalculatorApplication",
+            "operatingSystem": "Any",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "featureList": [
+                "Initial investment calculation",
+                "Property value increase estimation",
+                "Time savings projection",
+                "Seasonal market adjustments",
+                "Local market factor consideration"
+            ]
+        }
+    </script>
+</Layout>

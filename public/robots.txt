@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Allow all bots to index the site
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: DuckDuckBot
+Allow: /
